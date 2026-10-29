@@ -259,6 +259,107 @@
             </div>
           </article>
 
+          <!-- Yarn & Found -->
+          <article class="game-card">
+            <img
+              class="game-preview yarn-preview"
+              src="images/yarn-and-found-preview.png"
+              alt="Pink gingham memory card with an embroidered yarn-ball design."
+              loading="lazy"
+            >
+
+            <div class="game-card-content">
+              <h3>Yarn &amp; Found</h3>
+
+              <p>Find six crafty pairs, one little match at a time.</p>
+
+              <ul class="tags" aria-label="Project details">
+                <li>JavaScript</li>
+                <li>Memory game</li>
+              </ul>
+
+              <div class="game-links">
+                <a
+                  class="button"
+                  href="games/yarn-and-found/index.html"
+                >
+                  Play game
+                  <span class="visually-hidden">— Yarn &amp; Found</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+
+                <a
+                  class="code-link"
+                  href="https://github.com/kayleighthomas/little-games-club/tree/main/games/yarn-and-found"
+                >
+                  View code
+                  <span class="visually-hidden">— Yarn &amp; Found</span>
+                </a>
+              </div>
+
+              <details class="behind-game">
+                <summary>Behind the game</summary>
+
+                <div class="behind-game-content">
+                  <p>
+                    A craft-themed memory game with twelve cards and six
+                    matching pairs. Find them in as few moves as possible,
+                    with your personal best saved between visits.
+                  </p>
+
+                  <h4>JavaScript I practised</h4>
+
+                  <ul>
+                    <li>
+                      <strong>Arrays and spread syntax:</strong>
+                      creating two copies of six items to build the deck.
+                    </li>
+                    <li>
+                      <strong>Fisher–Yates shuffle:</strong>
+                      randomising card positions using a loop and swaps.
+                    </li>
+                    <li>
+                      <strong>Creating DOM elements:</strong>
+                      building twelve card buttons and their click listeners.
+                    </li>
+                    <li>
+                      <strong>dataset and conditions:</strong>
+                      comparing the two revealed cards.
+                    </li>
+                    <li>
+                      <strong>State management:</strong>
+                      tracking selected cards, moves and matching pairs,
+                      while preventing extra flips during a comparison.
+                    </li>
+                    <li>
+                      <strong>setTimeout() and clearTimeout():</strong>
+                      hiding unmatched cards and safely restarting a round.
+                    </li>
+                    <li>
+                      <strong>localStorage:</strong>
+                      saving and restoring the lowest completed move count.
+                    </li>
+                  </ul>
+
+                  <h4>Key functions</h4>
+
+                  <p class="function-list">
+                    <code>shuffleCards()</code>
+                    <code>createCard()</code>
+                    <code>startGame()</code>
+                    <code>flipCard()</code>
+                    <code>checkForMatch()</code>
+                    <code>keepMatchingPair()</code>
+                    <code>hideUnmatchedPair()</code>
+                    <code>finishGame()</code>
+                    <code>loadBestScore()</code>
+                    <code>saveBestScore()</code>
+                  </p>
+                </div>
+              </details>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>

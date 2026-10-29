@@ -828,3 +828,12 @@ nav a:hover {
 .games-grid {
   align-items: start;
 }
+
+/* Centre the third project beneath the first two. */
+@media (min-width: 761px) {
+  .games-grid > .game-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: calc((100% - 24px) / 2);
+    justify-self: center;
+  }
+}
