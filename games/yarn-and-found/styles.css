@@ -1,0 +1,483 @@
+:root {
+  --cream: #fff8ed;
+  --ink: #54392e;
+  --muted: #806858;
+  --rose: #bb7580;
+  --lilac: #d7bfdc;
+  --sage: #94a47b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  padding: 12px 16px 24px;
+
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at top left, #f6e2db66, transparent 60%),
+    var(--cream);
+
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.5;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #82649c;
+  outline-offset: 4px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Navigation and heading */
+.back-link {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 10px;
+  padding: 6px 12px;
+
+  border-radius: 999px;
+  color: #86505c;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.game {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.game-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.game-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Board left, project panel right */
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  align-items: start;
+  gap: 28px;
+  margin: 0 auto;
+}
+
+.board-panel {
+  min-width: 0;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* JavaScript will create these card buttons. */
+.memory-card {
+  position: relative;
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1;
+  padding: 8px;
+  overflow: hidden;
+
+  border: 2px solid #cfa59b;
+  border-radius: 18px;
+
+  background-color: #dca4a5;
+  background-image: url("images/card-back.png");
+  background-size: cover;
+  background-position: center;
+
+  box-shadow: 0 3px 0 #ccb09d;
+  transition: transform 150ms ease, border-color 150ms ease;
+}
+
+.memory-card:hover:not(:disabled) {
+  transform: translateY(-3px);
+}
+
+/* The illustration stays hidden until the card is revealed. */
+.memory-card::before {
+  content: "";
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  visibility: hidden;
+
+  background-image: url("images/craft-items.png");
+  background-size: 300% 200%;
+  background-repeat: no-repeat;
+}
+
+.memory-card.is-flipped,
+.memory-card.is-matched {
+  background-image: none;
+  background-color: var(--cream);
+  border-color: #d8c0a3;
+}
+
+.memory-card.is-flipped::before,
+.memory-card.is-matched::before {
+  visibility: visible;
+}
+
+.memory-card.is-matched {
+  border-color: var(--sage);
+  box-shadow: 0 3px 0 #bac5a6;
+  cursor: default;
+}
+
+/* Six positions in our three-column, two-row sprite sheet */
+.memory-card[data-item="yarn"]::before {
+  background-position: 0% 0%;
+}
+
+.memory-card[data-item="hook"]::before {
+  background-position: 50% 0%;
+}
+
+.memory-card[data-item="mitten"]::before {
+  background-position: 100% 0%;
+}
+
+.memory-card[data-item="thread"]::before {
+  background-position: 0% 100%;
+}
+
+.memory-card[data-item="scissors"]::before {
+  background-position: 50% 100%;
+}
+
+.memory-card[data-item="hoop"]::before {
+  background-position: 100% 100%;
+}
+
+/* Stitched project panel */
+.game-sidebar {
+  min-width: 0;
+  padding: 22px 20px 12px;
+
+  border: 1px solid #e2cfb7;
+  outline: 2px dashed #dec6a7;
+  outline-offset: -8px;
+  border-radius: 24px;
+
+  background: #fffaf1;
+  box-shadow: 0 4px 12px #70513c12;
+  text-align: center;
+}
+
+.game-sidebar h2 {
+  margin: 0;
+  font-size: 1.55rem;
+  line-height: 1.2;
+}
+
+.stitched-divider {
+  display: block;
+  margin: 10px 0;
+  color: var(--rose);
+}
+
+.statistics {
+  text-align: left;
+}
+
+.statistics p {
+  margin: 6px 0;
+  font-size: 1.3rem;
+}
+
+#pair-progress {
+  display: block;
+  width: 100%;
+  height: 18px;
+  margin: 18px 0 22px;
+  overflow: hidden;
+  appearance: none;
+
+  border: 1px solid #d6c6aa;
+  border-radius: 999px;
+  background: #eee5d4;
+}
+
+#pair-progress::-webkit-progress-bar {
+  background: #eee5d4;
+}
+
+#pair-progress::-webkit-progress-value {
+  border-radius: 999px;
+  background: var(--sage);
+}
+
+#pair-progress::-moz-progress-bar {
+  border-radius: 999px;
+  background: var(--sage);
+}
+
+#new-game-button {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 16px;
+
+  border: 2px solid #ac8bb7;
+  border-radius: 14px;
+  background: var(--lilac);
+  box-shadow: 0 3px 0 #b197bb;
+}
+
+#new-game-button:hover {
+  background: #e3cfe6;
+}
+
+#game-message {
+  margin: 20px 0 12px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
+.best-score {
+  margin: 8px 0;
+}
+
+.craft-basket {
+  display: block;
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+  margin: 12px auto 0;
+}
+
+/* Scale the board for smaller laptop heights. */
+@media (min-width: 800px) {
+  .game-layout {
+    width: min(
+      100%,
+      max(640px, calc((100svh - 190px) * 1.3333 + 288px))
+    );
+  }
+}
+
+@media (min-width: 800px) and (max-height: 750px) {
+  .game-sidebar {
+    padding: 18px 18px 10px;
+  }
+
+  .craft-basket {
+    width: 90px;
+  }
+
+  #game-message {
+    margin-top: 14px;
+  }
+
+  #pair-progress {
+    margin: 12px 0 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 799px) {
+  body {
+    padding: 10px 12px 20px;
+  }
+
+  .game {
+    max-width: 600px;
+  }
+
+  .game-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .game-header {
+    margin-bottom: 16px;
+  }
+
+  .card-grid {
+    gap: 8px;
+  }
+
+  .memory-card {
+    padding: 5px;
+    border-radius: 12px;
+  }
+
+  .game-sidebar {
+    padding: 20px;
+  }
+
+  .statistics {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+  }
+
+  .statistics p {
+    font-size: 1.15rem;
+  }
+
+  #pair-progress,
+  #new-game-button {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .craft-basket {
+    width: 110px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-card {
+    transition: none;
+  }
+
+  .memory-card:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+@media (max-width: 799px) {
+  body {
+    padding: 6px 10px 14px;
+  }
+
+  .back-link {
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+
+  .game-header {
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .game-header p {
+    font-size: 0.85rem;
+  }
+
+  .game-layout {
+    gap: 12px;
+  }
+
+  .card-grid {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    gap: 7px;
+  }
+
+  .game-sidebar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px 12px;
+    padding: 16px;
+  }
+
+  .game-sidebar h2 {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 1.15rem;
+  }
+
+  .statistics {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .statistics p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  #new-game-button {
+    grid-column: 2;
+    grid-row: 2;
+    width: auto;
+    min-height: 44px;
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  #pair-progress {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: none;
+    height: 12px;
+    margin: 0;
+  }
+
+  #game-message {
+    grid-column: 1 / -1;
+    margin: 2px 0;
+    font-size: 0.85rem;
+  }
+
+  .best-score {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .stitched-divider,
+  .craft-basket {
+    display: none;
+  }
+}
