@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cat Café Rush</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a class="back-link" href="../../index.html#games">
+    ← Back to Little Games Club
+  </a>
+
+  <main class="game">
+    <header class="game-header">
+      <h1>Cat Café Rush</h1>
+      <p>Little orders, happy paws.</p>
+    </header>
+
+    <div class="game-layout">
+      <div class="play-area">
+        <section class="cafe" aria-label="Café counter">
+          <div id="cafe-popup" role="status" hidden></div>
+
+          <div
+            id="customer"
+            class="customer"
+            aria-hidden="true"
+          ></div>
+
+          <div class="order-panel">
+            <div class="order-bubble">
+              <span
+                id="order-picture"
+                class="menu-picture"
+                aria-hidden="true"
+              ></span>
+
+              <p id="order-text">Ready for your first customer?</p>
+            </div>
+
+            <label for="patience">Patience</label>
+            <progress id="patience" max="100" value="100"></progress>
+          </div>
+        </section>
+
+        <section class="menu" aria-label="Choose an item to serve">
+          <button class="menu-item" data-item="matcha" disabled>
+            <span
+              class="menu-picture matcha-picture"
+              aria-hidden="true"
+            ></span>
+            <span>Matcha</span>
+          </button>
+
+          <button
+            class="menu-item"
+            data-item="strawberry-milk"
+            disabled
+          >
+            <span
+              class="menu-picture strawberry-picture"
+              aria-hidden="true"
+            ></span>
+            <span>Strawberry milk</span>
+          </button>
+
+          <button class="menu-item" data-item="cake" disabled>
+            <span
+              class="menu-picture cake-picture"
+              aria-hidden="true"
+            ></span>
+            <span>Cake</span>
+          </button>
+        </section>
+      </div>
+
+      <aside class="game-sidebar" aria-label="Game status and controls">
+        <section class="scoreboard" aria-label="Game statistics">
+          <p>⭐ Score: <span id="score">0</span></p>
+          <p>⏱️ Time: <span id="time">45</span>s</p>
+        </section>
+
+        <p id="game-message" role="status">
+          Serve the right item before your customer loses patience!
+        </p>
+
+        <div class="game-controls">
+          <button id="start-button">Start game</button>
+          <button id="restart-button" hidden>Restart round</button>
+        </div>
+
+        <p class="game-hint">
+          Correct order: +10 points.<br>
+          Wrong item: −2 seconds of patience.
+        </p>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

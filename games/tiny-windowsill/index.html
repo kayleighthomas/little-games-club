@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tiny Windowsill</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a class="back-link" href="../../index.html#games">
+    ← Back to Little Games Club
+  </a>
+
+  <main>
+    <header class="game-header">
+      <h1>Tiny Windowsill</h1>
+      <p>A little care goes a long way.</p>
+    </header>
+
+    <div class="game-layout">
+      <section class="garden-panel" aria-label="Your windowsill">
+        <div id="tools" role="group" aria-label="Garden tools">
+          <button id="seed-tool" aria-pressed="true">
+            <span
+              class="tool-picture seed-picture"
+              aria-hidden="true"
+            ></span>
+            <span>Plant seeds</span>
+          </button>
+
+          <button id="water-tool" aria-pressed="false">
+            <span
+              class="tool-picture water-picture"
+              aria-hidden="true"
+            ></span>
+            <span>Water</span>
+          </button>
+        </div>
+
+        <div id="garden">
+          <span
+            class="decoration hanging-plant"
+            aria-hidden="true"
+          ></span>
+
+          <button class="plant-pot">🪴</button>
+          <button class="plant-pot">🪴</button>
+          <button class="plant-pot">🪴</button>
+
+          <span
+            class="decoration sleepy-cat"
+            aria-hidden="true"
+          ></span>
+
+          <span
+            class="decoration daisy-vase"
+            aria-hidden="true"
+          ></span>
+        </div>
+      </section>
+
+      <aside class="garden-status" aria-label="Garden progress">
+        <p id="water-count">Your garden is ready 🌱</p>
+
+        <button id="reset-button">Start again</button>
+
+        <p id="game-message" role="status">
+          Click an empty pot to plant a seed 🌱
+        </p>
+
+        <p id="garden-progress">Flowers bloomed: 0 / 3</p>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

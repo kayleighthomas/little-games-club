@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="A growing collection of browser games and playful experiments from an indie developer."
+  >
+
+  <title>Little Games Club — Small games. Big imagination.</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="site-name" href="./" aria-label="Little Games Club home">
+      little games club
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="#games">Games</a>
+      <a href="#about">About</a>
+      <a href="https://github.com/kayleighthomas">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-copy">
+        <h1 id="hero-heading">
+          Small games.<br>
+          Big imagination.
+        </h1>
+
+        <p>
+          A growing collection of browser games, experiments,
+          and things made for the fun of it.
+        </p>
+
+        <a class="button" href="#games">
+          Explore the games <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <img
+        class="hero-image"
+        src="images/creative-desk.png"
+        alt="An illustrated desk with a laptop, notebooks, flowers and a warm cup of coffee."
+        fetchpriority="high"
+      >
+    </section>
+
+    <section
+      id="games"
+      class="games-section"
+      aria-labelledby="games-heading"
+    >
+      <div class="section-inner">
+        <h2 id="games-heading">Pick your next little escape</h2>
+
+        <div class="games-grid">
+
+          <!-- Tiny Windowsill -->
+          <article class="game-card">
+            <img
+              class="game-preview"
+              src="images/tiny-windowsill-preview.png"
+              alt="Laptop preview of Tiny Windowsill, a game about growing flowers."
+              loading="lazy"
+            >
+
+            <div class="game-card-content">
+              <h3>Tiny Windowsill</h3>
+
+              <p>Plant seeds and grow three little flowers.</p>
+
+              <ul class="tags" aria-label="Project details">
+                <li>JavaScript</li>
+                <li>Browser game</li>
+              </ul>
+
+              <div class="game-links">
+                <a
+                  class="button"
+                  href="games/tiny-windowsill/index.html"
+                >
+                  Play game
+                  <span class="visually-hidden">— Tiny Windowsill</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+
+                <a
+                  class="code-link"
+                  href="https://github.com/kayleighthomas/tiny-windowsill"
+                >
+                  View code
+                  <span class="visually-hidden">— Tiny Windowsill</span>
+                </a>
+              </div>
+
+              <details class="behind-game">
+                <summary>Behind the game</summary>
+
+                <div class="behind-game-content">
+                  <p>
+                    A browser gardening game where you plant seeds,
+                    choose a watering can and grow three flowers.
+                    Each plant grows independently, and your garden
+                    is saved between visits.
+                  </p>
+
+                  <h4>JavaScript I practised</h4>
+
+                  <ul>
+                    <li>
+                      <strong>Arrays and objects:</strong>
+                      storing each plant’s watering count and
+                      planting status.
+                    </li>
+                    <li>
+                      <strong>Event listeners:</strong>
+                      responding to tool selection, watering
+                      and resetting.
+                    </li>
+                    <li>
+                      <strong>Conditions and DOM updates:</strong>
+                      changing growth stages, instructions
+                      and button states.
+                    </li>
+                    <li>
+                      <strong>filter():</strong>
+                      counting how many flowers have bloomed.
+                    </li>
+                    <li>
+                      <strong>localStorage and JSON:</strong>
+                      saving and restoring the garden.
+                    </li>
+                    <li>
+                      <strong>setTimeout():</strong>
+                      controlling the watering animation.
+                    </li>
+                  </ul>
+
+                  <h4>Key functions</h4>
+
+                  <p class="function-list">
+                    <code>selectTool()</code>
+                    <code>renderGarden()</code>
+                    <code>saveGarden()</code>
+                    <code>loadGarden()</code>
+                    <code>showWatering()</code>
+                  </p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <!-- Cat Café Rush -->
+          <article class="game-card">
+            <img
+              class="game-preview"
+              src="images/cat-cafe-rush-preview.png"
+              alt="Laptop preview of Cat Café Rush, a game about serving café orders."
+              loading="lazy"
+            >
+
+            <div class="game-card-content">
+              <h3>Cat Café Rush</h3>
+
+              <p>Serve the right orders before patience runs out.</p>
+
+              <ul class="tags" aria-label="Project details">
+                <li>JavaScript</li>
+                <li>Browser game</li>
+              </ul>
+
+              <div class="game-links">
+                <a
+                  class="button"
+                  href="games/cat-cafe-rush/index.html"
+                >
+                  Play game
+                  <span class="visually-hidden">— Cat Café Rush</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+
+                <a
+                  class="code-link"
+                  href="https://github.com/kayleighthomas/cat-cafe-rush"
+                >
+                  View code
+                  <span class="visually-hidden">— Cat Café Rush</span>
+                </a>
+              </div>
+
+              <details class="behind-game">
+                <summary>Behind the game</summary>
+
+                <div class="behind-game-content">
+                  <p>
+                    A 45-second café game where you match menu items
+                    to customer orders. Correct orders earn points,
+                    mistakes reduce patience, and customers become
+                    less patient as your score increases.
+                  </p>
+
+                  <h4>JavaScript I practised</h4>
+
+                  <ul>
+                    <li>
+                      <strong>Arrays and objects:</strong>
+                      defining the café menu and tracking
+                      the current order.
+                    </li>
+                    <li>
+                      <strong>Math.random() and Math.floor():</strong>
+                      selecting customer orders.
+                    </li>
+                    <li>
+                      <strong>dataset and event listeners:</strong>
+                      identifying and checking the item served.
+                    </li>
+                    <li>
+                      <strong>State and conditions:</strong>
+                      managing scoring, difficulty and
+                      customer transitions.
+                    </li>
+                    <li>
+                      <strong>Date.now() and setInterval():</strong>
+                      measuring the round time and remaining patience.
+                    </li>
+                    <li>
+                      <strong>Timeouts and CSS classes:</strong>
+                      displaying popups and animating
+                      departing customers.
+                    </li>
+                  </ul>
+
+                  <h4>Key functions</h4>
+
+                  <p class="function-list">
+                    <code>startGame()</code>
+                    <code>nextCustomer()</code>
+                    <code>serveItem()</code>
+                    <code>updateTimers()</code>
+                    <code>getCustomerDuration()</code>
+                    <code>loseCustomer()</code>
+                    <code>showPopup()</code>
+                    <code>endGame()</code>
+                  </p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="about" class="site-footer">
+    <div class="footer-content">
+      <img
+        class="sprout-image"
+        src="images/sprout.png"
+        alt=""
+        loading="lazy"
+      >
+
+      <h2>Small projects. A growing developer.</h2>
+
+      <p>
+        I’m building playful things while sharpening
+        my JavaScript skills.
+      </p>
+
+      <span class="heart-divider" aria-hidden="true">♡</span>
+
+      <nav aria-label="Social links">
+        <a href="https://github.com/kayleighthomas">
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            class="social-icon"
+          >
+            <path
+              fill="currentColor"
+              d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.29-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.29-.5-1.43.11-2.98 0 0 .95-.3 3.09 1.15A10.7 10.7 0 0 1 12 6.16c.96 0 1.92.13 2.82.38 2.15-1.45 3.09-1.15 3.09-1.15.61 1.55.23 2.69.11 2.98.72.79 1.16 1.79 1.16 3.02 0 4.32-2.63 5.27-5.14 5.55.4.35.76 1.03.76 2.08v3.11c0 .3.2.65.77.54A11.25 11.25 0 0 0 12 .75Z"
+            />
+          </svg>
+          GitHub
+        </a>
+
+        <a href="https://www.instagram.com/_girlyml_/">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            aria-hidden="true"
+            class="social-icon"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle
+              cx="17.5"
+              cy="6.5"
+              r="1"
+              fill="currentColor"
+              stroke="none"
+            />
+          </svg>
+          Instagram
+        </a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

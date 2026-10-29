@@ -1,0 +1,518 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure hidden controls and popups stay hidden. */
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  padding: 12px 16px 24px;
+
+  font-family: "Trebuchet MS", sans-serif;
+  color: #624333;
+
+  background: radial-gradient(
+    ellipse at top,
+    #ffe2da,
+    #fff7eb 70%
+  );
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+button:focus-visible,
+.back-link:focus-visible {
+  outline: 3px solid #82649c;
+  outline-offset: 4px;
+}
+
+/* Portfolio navigation */
+.back-link {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 12px;
+  padding: 8px 14px;
+
+  border-radius: 999px;
+  background: #fff8ed;
+  color: #624333;
+
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Heading */
+.game {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.game-header {
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 6px;
+
+  font-family: "Chalkboard SE", "Comic Sans MS", cursive;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.15;
+}
+
+.game-header p {
+  margin: 0;
+}
+
+/* Desktop layout */
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  align-items: center;
+  gap: 24px;
+  margin: 0 auto;
+}
+
+.play-area {
+  min-width: 0;
+}
+
+/* Café scenery */
+.cafe {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 11 / 5;
+  overflow: hidden;
+
+  border: 3px solid #eab7a9;
+  border-radius: 26px 26px 8px 8px;
+
+  background-image: url("images/cafe-background.png");
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #f5d6c6;
+}
+
+.customer {
+  position: absolute;
+  left: 8%;
+  bottom: 10%;
+  width: 36%;
+  height: 80%;
+
+  background-image: url("images/cat-customer.png");
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+
+  opacity: 1;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.customer.leaving {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Customer order and patience */
+.order-panel {
+  position: absolute;
+  top: 15%;
+  right: 4%;
+  width: 46%;
+  text-align: left;
+}
+
+.order-bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 78px;
+  padding: 12px;
+
+  border: 2px solid #bf987d;
+  border-radius: 26px 26px 26px 6px;
+  background: #fff9ed;
+  box-shadow: 0 4px 0 #a46c4914;
+}
+
+#order-text {
+  margin: 0;
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+  line-height: 1.4;
+}
+
+.order-panel label {
+  display: block;
+  width: fit-content;
+  margin: 6px 0 4px;
+  padding: 3px 8px;
+
+  border-radius: 8px;
+  background: #fff9ed;
+  font-size: 0.8rem;
+}
+
+#patience {
+  display: block;
+  width: 100%;
+  height: 16px;
+  overflow: hidden;
+  appearance: none;
+
+  border: 2px solid #bf987d;
+  border-radius: 999px;
+  background: #fff5e4;
+}
+
+#patience::-webkit-progress-bar {
+  background: #fff5e4;
+}
+
+#patience::-webkit-progress-value {
+  border-radius: 999px;
+  background: #98ae77;
+}
+
+#patience::-moz-progress-bar {
+  border-radius: 999px;
+  background: #98ae77;
+}
+
+#patience.missed,
+#patience.missed::-webkit-progress-bar {
+  background: #f2afbd;
+}
+
+#patience.missed::-webkit-progress-value {
+  background: #df829a;
+}
+
+#patience.missed::-moz-progress-bar {
+  background: #df829a;
+}
+
+/* Café feedback popup */
+#cafe-popup {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  z-index: 5;
+  transform: translateX(-50%);
+
+  width: max-content;
+  max-width: 92%;
+  padding: 9px 14px;
+
+  border: 2px solid #d89ca9;
+  border-radius: 16px;
+  background: #fff5ed;
+  color: #754655;
+  box-shadow: 0 4px 12px #62433322;
+
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Menu cards */
+.menu {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+
+  min-width: 0;
+  padding: 8px;
+
+  border: 2px solid #e3bda3;
+  border-radius: 20px;
+  background: #fff9ed;
+  box-shadow: 0 4px 0 #e6c9b6;
+
+  transition: transform 150ms ease;
+}
+
+.menu-item:hover:not(:disabled) {
+  transform: translateY(-4px);
+}
+
+.menu-item > span:last-child {
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  min-height: 44px;
+  padding: 6px 4px;
+
+  border-radius: 12px;
+  background: #e9dcf0;
+  font-size: 0.9rem;
+}
+
+.menu-item:nth-child(2) > span:last-child {
+  background: #f9d8ca;
+}
+
+/* Food sprite sheet */
+.menu-picture {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+
+  background-image: url("images/menu-items.png");
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+}
+
+.menu-item > .menu-picture {
+  max-width: 100px;
+}
+
+.matcha-picture,
+.menu-picture[data-item="matcha"] {
+  background-position: 0% 0%;
+}
+
+.strawberry-picture,
+.menu-picture[data-item="strawberry-milk"] {
+  background-position: 50% 0%;
+}
+
+.cake-picture,
+.menu-picture[data-item="cake"] {
+  background-position: 100% 0%;
+}
+
+#order-picture {
+  flex-shrink: 0;
+  width: 52px;
+}
+
+#order-picture:not([data-item]) {
+  display: none;
+}
+
+/* Right-hand sidebar */
+.game-sidebar {
+  min-width: 0;
+  padding: 16px 8px;
+  text-align: center;
+}
+
+.scoreboard {
+  display: grid;
+  gap: 12px;
+}
+
+.scoreboard p {
+  margin: 0;
+  padding: 10px 14px;
+
+  border: 2px solid #e5c4aa;
+  border-radius: 999px;
+  background: #fff8e9;
+}
+
+#game-message {
+  margin: 22px 0;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.game-controls button {
+  min-height: 44px;
+  padding: 11px 26px;
+  border-radius: 999px;
+}
+
+#start-button {
+  border: 2px solid #ce8290;
+  background: #efa2ad;
+  box-shadow: 0 4px 0 #d68a98;
+}
+
+#start-button:hover {
+  background: #f6b4bd;
+}
+
+#restart-button {
+  border: 2px solid #c5afd8;
+  background: #e9ddf3;
+  box-shadow: 0 3px 0 #c5afd8;
+}
+
+#restart-button:hover {
+  background: #dcc9ec;
+}
+
+.game-hint {
+  margin: 20px 0 0;
+  color: #876d62;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+/* Keep the play area compact on shorter laptops. */
+@media (min-width: 800px) {
+  .game-layout {
+    width: min(
+      100%,
+      max(600px, calc((100svh - 360px) * 2.2 + 264px))
+    );
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 799px) {
+  body {
+    padding: 10px 12px 20px;
+  }
+
+  .game {
+    max-width: 650px;
+  }
+
+  .game-header {
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+
+  .game-header p {
+    font-size: 0.9rem;
+  }
+
+  .game-layout {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .game-sidebar {
+    padding: 0 4px;
+  }
+
+  .scoreboard {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .scoreboard p {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  #game-message {
+    margin: 14px 0;
+    font-size: 0.9rem;
+  }
+
+  .game-hint {
+    margin-top: 14px;
+  }
+}
+
+/* Smaller phones */
+@media (max-width: 480px) {
+  .cafe {
+    aspect-ratio: 2 / 1;
+    border-radius: 20px 20px 6px 6px;
+  }
+
+  .order-panel {
+    top: 10%;
+    width: 48%;
+  }
+
+  .order-bubble {
+    gap: 4px;
+    min-height: 60px;
+    padding: 7px;
+    border-radius: 18px 18px 18px 4px;
+  }
+
+  #order-text {
+    font-size: 0.8rem;
+  }
+
+  #order-picture {
+    width: 32px;
+  }
+
+  .order-panel label {
+    margin: 4px 0 3px;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+  }
+
+  #patience {
+    height: 13px;
+  }
+
+  .menu {
+    gap: 7px;
+    margin-top: 10px;
+  }
+
+  .menu-item {
+    padding: 5px;
+    border-radius: 15px;
+  }
+
+  .menu-item > .menu-picture {
+    max-width: 74px;
+  }
+
+  .menu-item > span:last-child {
+    font-size: 0.75rem;
+  }
+
+  #cafe-popup {
+    padding: 6px 9px;
+    font-size: 0.72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .customer,
+  .menu-item {
+    transition: none;
+  }
+
+  .customer.leaving {
+    transform: none;
+  }
+}
